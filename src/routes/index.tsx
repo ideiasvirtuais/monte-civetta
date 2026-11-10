@@ -56,7 +56,7 @@ function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <img src={logo.url} alt="Monte Civetta" className="h-14 w-auto mix-blend-multiply" />
+        <img src={logo.url} alt="Monte Civetta" className="h-24 w-auto mix-blend-multiply md:h-32" />
         <a
           href={IFOOD}
           target="_blank"
@@ -155,7 +155,8 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t py-8 text-center text-sm text-muted-foreground">
+      <footer className="border-t py-10 text-center text-sm text-muted-foreground">
+        <img src={logo.url} alt="Monte Civetta" className="mx-auto mb-4 h-32 w-auto mix-blend-multiply md:h-40" />
         © {new Date().getFullYear()} Monte Civetta Gelateria · La Casa del Gelato
       </footer>
     </main>
