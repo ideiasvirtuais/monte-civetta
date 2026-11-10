@@ -1,7 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Instagram, MapPin, Bike, Link2 } from "lucide-react";
+import { Clock, Instagram, MapPin, Bike, Link2, Phone } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
 import poster from "@/assets/poster.png.asset.json";
+import g10 from "@/assets/ig-10.jpg.asset.json";
+import g11 from "@/assets/ig-11.jpg.asset.json";
+import g12 from "@/assets/ig-12.jpg.asset.json";
+import g3 from "@/assets/ig-3.jpg.asset.json";
+import g6 from "@/assets/ig-6.jpg.asset.json";
+import g7 from "@/assets/ig-7.jpg.asset.json";
+import g8 from "@/assets/ig-8.jpg.asset.json";
+import g9 from "@/assets/ig-9.jpg.asset.json";
+
+const WHATSAPP = "https://wa.me/5548991235390";
+const GALLERY = [
+  { src: g10.url, alt: "Cliente segurando casquinha de gelato de pistache" },
+  { src: g12.url, alt: "Vitrine de gelatos da Monte Civetta em Canasvieiras" },
+  { src: g7.url, alt: "Banana split com gelato e calda de frutas vermelhas" },
+  { src: g3.url, alt: "Cappuccino com brownie e gelato" },
+  { src: g6.url, alt: "Casquinha de gelato dentro da loja" },
+  { src: g8.url, alt: "Brownie com gelato servido na bandeja" },
+  { src: g11.url, alt: "Cliente saboreando uma casquinha" },
+  { src: g9.url, alt: "Fachada e jardim da gelateria" },
+];
+const HOURS = [
+  ["Segunda", "Fechado"],
+  ["Terça a quinta", "13h às 19h"],
+  ["Sexta, sábado, domingo e feriados", "13h às 20h"],
+];
 
 const IFOOD =
   "https://www.ifood.com.br/delivery/florianopolis-sc/monte-civetta-gelateria-canasvieiras/47cab871-7828-4ad0-8a83-d783adf0df75";
@@ -15,12 +40,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Gelato artesanal italiano em Canasvieiras, Florianópolis. Aberto das 13h às 20h. Peça pelo iFood.",
+          "Gelato artesanal em Canasvieiras, Florianópolis. R. Des. Maurílio Coimbra, 95. Ter–Dom a partir das 13h. Peça pelo iFood.",
       },
       { property: "og:title", content: "Monte Civetta Gelateria — La Casa del Gelato" },
       {
         property: "og:description",
-        content: "Gelato artesanal em Canasvieiras, Florianópolis. Das 13h às 20h.",
+        content: "Gelato artesanal em Canasvieiras, Florianópolis. Ter–Dom a partir das 13h.",
       },
     ],
   }),
@@ -55,7 +80,7 @@ function Index() {
           <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-cocoa/40 px-6 py-3">
             <Clock className="h-5 w-5 text-cocoa" />
             <span>
-              Estamos abertos <strong className="text-cocoa">das 13h às 20h</strong>
+              Terça a domingo, <strong className="text-cocoa">a partir das 13h</strong>
             </span>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -80,25 +105,46 @@ function Index() {
       <section className="bg-cocoa py-20 text-cream">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-3">
           {[
-            { icon: MapPin, t: "Onde estamos", d: "Canasvieiras, Florianópolis — SC" },
-            { icon: Clock, t: "Horário", d: "Todos os dias, das 13h às 20h" },
-            { icon: Bike, t: "Delivery", d: "Receba em casa pelo iFood" },
-          ].map(({ icon: Icon, t, d }) => (
-            <div key={t}>
+            { icon: MapPin, t: "Onde estamos", d: "R. Des. Maurílio Coimbra, 95 — Canasvieiras, Florianópolis", href: "https://www.google.com/maps/search/?api=1&query=R.+Des.+Maur%C3%ADlio+Coimbra+95+Canasvieiras+Florian%C3%B3polis" },
+            { icon: Phone, t: "Fale conosco", d: "(48) 99123-5390", href: WHATSAPP },
+          ].map(({ icon: Icon, t, d, href }) => (
+            <a key={t} href={href} target="_blank" rel="noreferrer" className="block hover:opacity-90">
               <Icon className="h-8 w-8 text-caramel" />
               <h2 className="mt-4 font-serif text-3xl">{t}</h2>
               <p className="mt-2 opacity-80">{d}</p>
-            </div>
+            </a>
+          ))}
+          <div>
+            <Clock className="h-8 w-8 text-caramel" />
+            <h2 className="mt-4 font-serif text-3xl">Horário</h2>
+            <ul className="mt-2 space-y-1 opacity-80">
+              {HOURS.map(([d, h]) => (
+                <li key={d} className="flex justify-between gap-4"><span>{d}</span><span className="font-medium">{h}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <p className="text-center text-sm uppercase tracking-[0.3em] text-caramel">Direto do nosso Instagram</p>
+        <h2 className="mt-3 text-center font-serif text-5xl text-cocoa">Momentos Monte Civetta</h2>
+        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+          {GALLERY.map((g) => (
+            <a key={g.src} href={INSTAGRAM} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-2xl">
+              <img src={g.src} alt={g.alt} loading="lazy" className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105" />
+            </a>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-6 py-20 text-center">
+      <section className="mx-auto max-w-3xl px-6 pb-20 text-center">
         <h2 className="font-serif text-5xl text-cocoa">Vem tomar um gelato!</h2>
         <p className="mt-4 text-muted-foreground">Acompanhe novidades e sabores do dia nas nossas redes.</p>
         <div className="mt-8 flex flex-col items-center gap-3">
           {[
             { href: IFOOD, label: "Pedir pelo iFood", icon: Bike },
+            { href: WHATSAPP, label: "WhatsApp (48) 99123-5390", icon: Phone },
             { href: INSTAGRAM, label: "@montecivettagelateria", icon: Instagram },
             { href: LINKTREE, label: "Todos os nossos links", icon: Link2 },
           ].map(({ href, label, icon: Icon }) => (
