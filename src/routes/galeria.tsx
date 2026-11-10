@@ -74,7 +74,7 @@ function Galeria() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-cocoa/95 p-4" onClick={() => setOpen(null)}>
           <button aria-label="Fechar" className="absolute right-4 top-4 text-cream"><X className="h-8 w-8" /></button>
           <button aria-label="Anterior" onClick={(e) => { e.stopPropagation(); go(-1); }} className="absolute left-2 text-cream md:left-6"><ChevronLeft className="h-10 w-10" /></button>
-          <img src={PHOTOS[open].src} alt={PHOTOS[open].alt} className="max-h-[90vh] max-w-full rounded-xl" onClick={(e) => e.stopPropagation()} />
+          <img src={PHOTOS[open]!.src} alt={PHOTOS[open]!.alt} className="max-h-[90vh] max-w-full rounded-xl" onClick={(e) => e.stopPropagation()} />
           <button aria-label="Próxima" onClick={(e) => { e.stopPropagation(); go(1); }} className="absolute right-2 text-cream md:right-6"><ChevronRight className="h-10 w-10" /></button>
         </div>
       )}
