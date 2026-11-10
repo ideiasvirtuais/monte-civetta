@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, Instagram, MapPin, Bike, Link2, Phone } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
 import poster from "@/assets/poster.png.asset.json";
@@ -57,6 +57,8 @@ function Index() {
     <main className="min-h-screen bg-background text-foreground">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <img src={logo.url} alt="Monte Civetta" className="h-24 w-auto mix-blend-multiply md:h-32" />
+        <div className="flex items-center gap-3">
+        <Link to="/galeria" className="rounded-full bg-secondary px-5 py-2 text-sm font-medium text-secondary-foreground hover:bg-muted">Galeria</Link>
         <a
           href={IFOOD}
           target="_blank"
@@ -65,6 +67,7 @@ function Index() {
         >
           Pedir no iFood
         </a>
+        </div>
       </header>
 
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-12 md:grid-cols-2 md:py-20">
@@ -135,6 +138,9 @@ function Index() {
               <img src={g.src} alt={g.alt} loading="lazy" className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105" />
             </a>
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Link to="/galeria" className="inline-flex rounded-full border border-cocoa/30 px-6 py-3 hover:bg-cocoa hover:text-cream">Ver galeria completa</Link>
         </div>
       </section>
 
