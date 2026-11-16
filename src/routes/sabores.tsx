@@ -73,6 +73,15 @@ const norm = (s: string) =>
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
 
+// Someone searching "dieta" or "vegana" should land on the tagged flavors.
+const TAG_SYNONYMS: Record<string, string> = {
+  dieta: "diet",
+  diet: "diet",
+  vegana: "vegano",
+  vegano: "vegano",
+  vegan: "vegano",
+};
+
 export const Route = createFileRoute("/sabores")({
   head: () => ({
     meta: [
@@ -96,20 +105,26 @@ function Sabores() {
   const [q, setQ] = useState("");
   const list = useMemo(() => {
     const needle = norm(q.trim());
-    return needle ? FLAVORS.filter((f) => norm(f.name).includes(needle)) : FLAVORS;
+    if (!needle) return FLAVORS;
+    const wantedTag = TAG_SYNONYMS[needle];
+    return FLAVORS.filter(
+      (f) =>
+        norm(f.name).includes(needle) ||
+        (f.tag && (needle.includes(f.tag) || f.tag.includes(needle) || f.tag === wantedTag)),
+    );
   }, [q]);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+      <header className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-3 px-6 py-5">
         <Link to="/">
           <img src={logo.url} alt="Monte Civetta" className="h-24 w-auto mix-blend-multiply md:h-32" />
         </Link>
-        <div className="flex items-center gap-3">
-          <Link to="/galeria" className="rounded-full bg-secondary px-5 py-2 text-sm font-medium text-secondary-foreground hover:bg-muted">
+        <div className="flex flex-wrap items-center justify-end gap-2 md:gap-3">
+          <Link to="/galeria" className="rounded-full bg-secondary px-4 py-2 text-xs font-medium text-secondary-foreground hover:bg-muted md:px-5 md:text-sm">
             Galeria
           </Link>
-          <Link to="/" className="rounded-full bg-secondary px-5 py-2 text-sm font-medium text-secondary-foreground hover:bg-muted">
+          <Link to="/" className="rounded-full bg-secondary px-4 py-2 text-xs font-medium text-secondary-foreground hover:bg-muted md:px-5 md:text-sm">
             ← Início
           </Link>
         </div>
