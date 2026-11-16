@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as SaboresRouteImport } from './routes/sabores'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const GaleriaRoute = GaleriaRouteImport.update({
   path: '/galeria',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SaboresRoute = SaboresRouteImport.update({
+  id: '/sabores',
+  path: '/sabores',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/galeria': typeof GaleriaRoute
+  '/sabores': typeof SaboresRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/galeria': typeof GaleriaRoute
+  '/sabores': typeof SaboresRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/galeria': typeof GaleriaRoute
+  '/sabores': typeof SaboresRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/galeria'
+  fullPaths: '/' | '/galeria' | '/sabores'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/galeria'
-  id: '__root__' | '/' | '/galeria'
+  to: '/' | '/galeria' | '/sabores'
+  id: '__root__' | '/' | '/galeria' | '/sabores'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   GaleriaRoute: typeof GaleriaRoute
+  SaboresRoute: typeof SaboresRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GaleriaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sabores': {
+      id: '/sabores'
+      path: '/sabores'
+      fullPath: '/sabores'
+      preLoaderRoute: typeof SaboresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   GaleriaRoute: GaleriaRoute,
+  SaboresRoute: SaboresRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
