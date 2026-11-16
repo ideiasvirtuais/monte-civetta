@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, Instagram, MapPin, Bike, Link2, Phone } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { ADDRESS, HOURS, IFOOD, INSTAGRAM, LINKTREE, MAP_URL, PHONE, WHATSAPP } from "@/lib/site";
 import poster from "@/assets/poster.png.asset.json";
 import g10 from "@/assets/ig-10.jpg.asset.json";
 import g11 from "@/assets/ig-11.jpg.asset.json";
@@ -11,7 +13,6 @@ import g7 from "@/assets/ig-7.jpg.asset.json";
 import g8 from "@/assets/ig-8.jpg.asset.json";
 import g9 from "@/assets/ig-9.jpg.asset.json";
 
-const WHATSAPP = "https://wa.me/5548991235390";
 const GALLERY = [
   { src: g10.url, alt: "Cliente segurando casquinha de gelato de pistache" },
   { src: g12.url, alt: "Vitrine de gelatos da Monte Civetta em Canasvieiras" },
@@ -22,16 +23,6 @@ const GALLERY = [
   { src: g11.url, alt: "Cliente saboreando uma casquinha" },
   { src: g9.url, alt: "Fachada e jardim da gelateria" },
 ];
-const HOURS = [
-  ["Segunda", "Fechado"],
-  ["Terça a quinta", "13h às 19h"],
-  ["Sexta, sábado, domingo e feriados", "13h às 20h"],
-];
-
-const IFOOD =
-  "https://www.ifood.com.br/delivery/florianopolis-sc/monte-civetta-gelateria-canasvieiras/47cab871-7828-4ad0-8a83-d783adf0df75";
-const INSTAGRAM = "https://www.instagram.com/montecivettagelateria";
-const LINKTREE = "https://linktr.ee/montecivettagelateria";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -55,20 +46,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <img src={logo.url} alt="Monte Civetta" className="h-24 w-auto mix-blend-multiply md:h-32" />
-        <div className="flex items-center gap-3">
-        <Link to="/galeria" className="rounded-full bg-secondary px-5 py-2 text-sm font-medium text-secondary-foreground hover:bg-muted">Galeria</Link>
-        <a
-          href={IFOOD}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90"
-        >
-          Pedir no iFood
-        </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-12 md:grid-cols-2 md:py-20">
         <div>
@@ -108,8 +86,8 @@ function Index() {
       <section className="bg-cocoa py-20 text-cream">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-3">
           {[
-            { icon: MapPin, t: "Onde estamos", d: "R. Des. Maurílio Coimbra, 95 — Canasvieiras, Florianópolis", href: "https://www.google.com/maps/search/?api=1&query=R.+Des.+Maur%C3%ADlio+Coimbra+95+Canasvieiras+Florian%C3%B3polis" },
-            { icon: Phone, t: "Fale conosco", d: "(48) 99123-5390", href: WHATSAPP },
+            { icon: MapPin, t: "Onde estamos", d: ADDRESS, href: MAP_URL },
+            { icon: Phone, t: "Fale conosco", d: PHONE, href: WHATSAPP },
           ].map(({ icon: Icon, t, d, href }) => (
             <a key={t} href={href} target="_blank" rel="noreferrer" className="block hover:opacity-90">
               <Icon className="h-8 w-8 text-caramel" />
@@ -150,7 +128,7 @@ function Index() {
         <div className="mt-8 flex flex-col items-center gap-3">
           {[
             { href: IFOOD, label: "Pedir pelo iFood", icon: Bike },
-            { href: WHATSAPP, label: "WhatsApp (48) 99123-5390", icon: Phone },
+            { href: WHATSAPP, label: `WhatsApp ${PHONE}`, icon: Phone },
             { href: INSTAGRAM, label: "@montecivettagelateria", icon: Instagram },
             { href: LINKTREE, label: "Todos os nossos links", icon: Link2 },
           ].map(({ href, label, icon: Icon }) => (
@@ -161,10 +139,7 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t py-10 text-center text-sm text-muted-foreground">
-        <img src={logo.url} alt="Monte Civetta" className="mx-auto mb-4 h-32 w-auto mix-blend-multiply md:h-40" />
-        © {new Date().getFullYear()} Monte Civetta Gelateria · La Casa del Gelato
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
