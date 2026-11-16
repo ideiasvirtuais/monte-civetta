@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Bike, Phone, Search } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { IFOOD, WHATSAPP } from "@/lib/site";
 
 const IFOOD =
   "https://www.ifood.com.br/delivery/florianopolis-sc/monte-civetta-gelateria-canasvieiras/47cab871-7828-4ad0-8a83-d783adf0df75";
@@ -118,19 +120,7 @@ function Sabores() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <header className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-3 px-6 py-5">
-        <Link to="/">
-          <img src={logo.url} alt="Monte Civetta" className="h-24 w-auto mix-blend-multiply md:h-32" />
-        </Link>
-        <div className="flex flex-wrap items-center justify-end gap-2 md:gap-3">
-          <Link to="/galeria" className="rounded-full bg-secondary px-4 py-2 text-xs font-medium text-secondary-foreground hover:bg-muted md:px-5 md:text-sm">
-            Galeria
-          </Link>
-          <Link to="/" className="rounded-full bg-secondary px-4 py-2 text-xs font-medium text-secondary-foreground hover:bg-muted md:px-5 md:text-sm">
-            ← Início
-          </Link>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className="mx-auto max-w-6xl px-6 pt-6 text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-caramel">Mais de 60 sabores</p>

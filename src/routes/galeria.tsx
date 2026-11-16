@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight, Instagram } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import p1 from "@/assets/galeria-1.jpg.asset.json";
 import p2 from "@/assets/galeria-2.jpg.asset.json";
 import p3 from "@/assets/galeria-3.jpg.asset.json";
@@ -48,13 +49,7 @@ function Galeria() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <header className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-3 px-6 py-5">
-        <Link to="/"><img src={logo.url} alt="Monte Civetta" className="h-24 w-auto mix-blend-multiply md:h-32" /></Link>
-        <div className="flex flex-wrap items-center justify-end gap-2 md:gap-3">
-          <Link to="/sabores" className="rounded-full bg-secondary px-4 py-2 text-xs font-medium text-secondary-foreground hover:bg-muted md:px-5 md:text-sm">Sabores</Link>
-          <Link to="/" className="rounded-full bg-secondary px-4 py-2 text-xs font-medium text-secondary-foreground hover:bg-muted md:px-5 md:text-sm">← Início</Link>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className="mx-auto max-w-6xl px-6 pb-20 pt-6">
         <p className="text-center text-sm uppercase tracking-[0.3em] text-caramel">La casa del gelato</p>

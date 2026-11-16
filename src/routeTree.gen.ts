@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EntregaRouteImport } from './routes/entrega'
+import { Route as FaleConoscoRouteImport } from './routes/fale-conosco'
 import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as LocalizacaoRouteImport } from './routes/localizacao'
+import { Route as ProdutosRouteImport } from './routes/produtos'
 import { Route as SaboresRouteImport } from './routes/sabores'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +22,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EntregaRoute = EntregaRouteImport.update({
+  id: '/entrega',
+  path: '/entrega',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaleConoscoRoute = FaleConoscoRouteImport.update({
+  id: '/fale-conosco',
+  path: '/fale-conosco',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GaleriaRoute = GaleriaRouteImport.update({
   id: '/galeria',
   path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalizacaoRoute = LocalizacaoRouteImport.update({
+  id: '/localizacao',
+  path: '/localizacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProdutosRoute = ProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SaboresRoute = SaboresRouteImport.update({
@@ -31,31 +55,69 @@ const SaboresRoute = SaboresRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/entrega': typeof EntregaRoute
+  '/fale-conosco': typeof FaleConoscoRoute
   '/galeria': typeof GaleriaRoute
+  '/localizacao': typeof LocalizacaoRoute
+  '/produtos': typeof ProdutosRoute
   '/sabores': typeof SaboresRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/entrega': typeof EntregaRoute
+  '/fale-conosco': typeof FaleConoscoRoute
   '/galeria': typeof GaleriaRoute
+  '/localizacao': typeof LocalizacaoRoute
+  '/produtos': typeof ProdutosRoute
   '/sabores': typeof SaboresRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/entrega': typeof EntregaRoute
+  '/fale-conosco': typeof FaleConoscoRoute
   '/galeria': typeof GaleriaRoute
+  '/localizacao': typeof LocalizacaoRoute
+  '/produtos': typeof ProdutosRoute
   '/sabores': typeof SaboresRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/galeria' | '/sabores'
+  fullPaths:
+    | '/'
+    | '/entrega'
+    | '/fale-conosco'
+    | '/galeria'
+    | '/localizacao'
+    | '/produtos'
+    | '/sabores'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/galeria' | '/sabores'
-  id: '__root__' | '/' | '/galeria' | '/sabores'
+  to:
+    | '/'
+    | '/entrega'
+    | '/fale-conosco'
+    | '/galeria'
+    | '/localizacao'
+    | '/produtos'
+    | '/sabores'
+  id:
+    | '__root__'
+    | '/'
+    | '/entrega'
+    | '/fale-conosco'
+    | '/galeria'
+    | '/localizacao'
+    | '/produtos'
+    | '/sabores'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EntregaRoute: typeof EntregaRoute
+  FaleConoscoRoute: typeof FaleConoscoRoute
   GaleriaRoute: typeof GaleriaRoute
+  LocalizacaoRoute: typeof LocalizacaoRoute
+  ProdutosRoute: typeof ProdutosRoute
   SaboresRoute: typeof SaboresRoute
 }
 
@@ -68,11 +130,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/entrega': {
+      id: '/entrega'
+      path: '/entrega'
+      fullPath: '/entrega'
+      preLoaderRoute: typeof EntregaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fale-conosco': {
+      id: '/fale-conosco'
+      path: '/fale-conosco'
+      fullPath: '/fale-conosco'
+      preLoaderRoute: typeof FaleConoscoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/galeria': {
       id: '/galeria'
       path: '/galeria'
       fullPath: '/galeria'
       preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/localizacao': {
+      id: '/localizacao'
+      path: '/localizacao'
+      fullPath: '/localizacao'
+      preLoaderRoute: typeof LocalizacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produtos': {
+      id: '/produtos'
+      path: '/produtos'
+      fullPath: '/produtos'
+      preLoaderRoute: typeof ProdutosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sabores': {
@@ -87,7 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EntregaRoute: EntregaRoute,
+  FaleConoscoRoute: FaleConoscoRoute,
   GaleriaRoute: GaleriaRoute,
+  LocalizacaoRoute: LocalizacaoRoute,
+  ProdutosRoute: ProdutosRoute,
   SaboresRoute: SaboresRoute,
 }
 export const routeTree = rootRouteImport
