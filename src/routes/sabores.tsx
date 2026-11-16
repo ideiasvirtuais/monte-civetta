@@ -82,6 +82,17 @@ const TAG_SYNONYMS: Record<string, string> = {
   vegan: "vegano",
 };
 
+export function filterFlavors(q: string): Flavor[] {
+  const needle = norm(q.trim());
+  if (!needle) return FLAVORS;
+  const wantedTag = TAG_SYNONYMS[needle];
+  return FLAVORS.filter(
+    (f) =>
+      norm(f.name).includes(needle) ||
+      (f.tag && (needle.includes(f.tag) || f.tag.includes(needle) || f.tag === wantedTag)),
+  );
+}
+
 export const Route = createFileRoute("/sabores")({
   head: () => ({
     meta: [
@@ -103,16 +114,7 @@ export const Route = createFileRoute("/sabores")({
 
 function Sabores() {
   const [q, setQ] = useState("");
-  const list = useMemo(() => {
-    const needle = norm(q.trim());
-    if (!needle) return FLAVORS;
-    const wantedTag = TAG_SYNONYMS[needle];
-    return FLAVORS.filter(
-      (f) =>
-        norm(f.name).includes(needle) ||
-        (f.tag && (needle.includes(f.tag) || f.tag.includes(needle) || f.tag === wantedTag)),
-    );
-  }, [q]);
+  const list = useMemo(() => filterFlavors(q), [q]);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
