@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, Instagram, MapPin, Bike, Link2, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { HeroSlideshow } from "@/components/hero-slideshow";
 import { ADDRESS, HOURS, IFOOD, INSTAGRAM, LINKTREE, MAP_URL, PHONE, WHATSAPP } from "@/lib/site";
-import poster from "@/assets/poster.png.asset.json";
 import g10 from "@/assets/ig-10.jpg.asset.json";
 import g11 from "@/assets/ig-11.jpg.asset.json";
 import g12 from "@/assets/ig-12.jpg.asset.json";
@@ -75,11 +75,7 @@ function Index() {
         </div>
         <div className="relative">
           <div className="absolute -inset-4 -rotate-3 rounded-[2rem] bg-secondary" />
-          <img
-            src={poster.url}
-            alt="Copinho com bolas de gelato de morango, chocolate e creme"
-            className="relative mx-auto max-h-[640px] rounded-[2rem] shadow-2xl"
-          />
+          <HeroSlideshow />
         </div>
       </section>
 

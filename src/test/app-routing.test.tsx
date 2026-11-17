@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 
 import { routeTree } from "@/routeTree.gen";
 import { WHATSAPP_CONTACT } from "@/lib/site";
+import { HERO_SLIDES } from "@/components/hero-slideshow";
 import { filterFlavors, FLAVORS } from "@/routes/sabores";
 
 // Match routes without running loaders or rendering: loaders may need a server or
@@ -47,6 +48,15 @@ describe("Flavor list", () => {
   it("shows every flavor when the search box is empty", () => {
     expect(filterFlavors("")).toHaveLength(55);
     expect(filterFlavors("   ")).toHaveLength(55);
+  });
+});
+
+describe("Home page slideshow", () => {
+  it("shows the five photos the shop sent, none repeated", () => {
+    expect(HERO_SLIDES).toHaveLength(5);
+    expect(new Set(HERO_SLIDES.map((s) => s.src)).size).toBe(5);
+    expect(HERO_SLIDES.every((s) => s.src.startsWith("/__l5e/assets-v1/"))).toBe(true);
+    expect(HERO_SLIDES.every((s) => s.alt.length > 10)).toBe(true);
   });
 });
 
