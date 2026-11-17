@@ -4,7 +4,7 @@ export const ADDRESS = "R. Des. Maurílio Coimbra, 95 — Canasvieiras, Florian�
 export const PHONE = "(48) 99123-5390";
 export const WHATSAPP = "https://wa.me/5548991235390";
 // Pre-filled message for the floating WhatsApp button.
-export const WHATSAPP_MESSAGE = "Olá, gostaria de tirar uma dúvida.";
+export const WHATSAPP_MESSAGE = "(Contato via site) Olá, gostaria de tirar uma dúvida.";
 export const WHATSAPP_CONTACT = `${WHATSAPP}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 export const IFOOD =
   "https://www.ifood.com.br/delivery/florianopolis-sc/monte-civetta-gelateria-canasvieiras/47cab871-7828-4ad0-8a83-d783adf0df75";

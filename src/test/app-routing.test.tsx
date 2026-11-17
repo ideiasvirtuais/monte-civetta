@@ -52,8 +52,10 @@ describe("Flavor list", () => {
 
 describe("Floating WhatsApp button", () => {
   it("opens the shop's number with the question pre-filled", () => {
-    expect(WHATSAPP_CONTACT).toBe(
-      "https://wa.me/5548991235390?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20uma%20d%C3%BAvida.",
+    const url = new URL(WHATSAPP_CONTACT);
+    expect(`${url.origin}${url.pathname}`).toBe("https://wa.me/5548991235390");
+    expect(url.searchParams.get("text")).toBe(
+      "(Contato via site) Olá, gostaria de tirar uma dúvida.",
     );
   });
 });
