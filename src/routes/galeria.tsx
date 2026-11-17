@@ -68,6 +68,8 @@ function Galeria() {
         </div>
       </section>
 
+      <SiteFooter />
+
       {open !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-cocoa/95 p-4" onClick={() => setOpen(null)}>
           <button aria-label="Fechar" className="absolute right-4 top-4 text-cream"><X className="h-8 w-8" /></button>
