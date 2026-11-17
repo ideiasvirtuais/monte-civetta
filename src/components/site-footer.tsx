@@ -7,7 +7,7 @@ export function SiteFooter() {
       <img
         src={logo.url}
         alt="Monte Civetta"
-        className="mx-auto mb-4 h-32 w-auto mix-blend-multiply md:h-40"
+        className="mx-auto mb-4 h-36 w-auto mix-blend-multiply md:h-48"
       />
       <p>{ADDRESS}</p>
       <ul className="mx-auto mt-3 flex max-w-md flex-col items-center gap-1">
