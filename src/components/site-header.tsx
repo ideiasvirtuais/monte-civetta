@@ -23,7 +23,7 @@ export function SiteHeader() {
           <img
             src={logo.url}
             alt="Monte Civetta"
-            className="h-24 w-auto mix-blend-multiply md:h-32"
+            className="h-28 w-auto mix-blend-multiply md:h-36"
           />
         </Link>
 
