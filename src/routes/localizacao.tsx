@@ -3,7 +3,7 @@ import { Clock, MapPin, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ADDRESS, HOURS, MAP_EMBED, MAP_URL, PHONE, WHATSAPP } from "@/lib/site";
-import g9 from "@/assets/ig-9.jpg.asset.json";
+import { SPACE_PHOTOS } from "@/lib/space-photos";
 
 export const Route = createFileRoute("/localizacao")({
   head: () => ({
@@ -15,6 +15,8 @@ export const Route = createFileRoute("/localizacao")({
           "Monte Civetta Gelateria em Canasvieiras, Florianópolis: R. Des. Maurílio Coimbra, 95. Ter–Dom, a partir das 13h.",
       },
       { property: "og:title", content: "Localização e horário — Monte Civetta Gelateria" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       {
         property: "og:description",
         content: "R. Des. Maurílio Coimbra, 95 — Canasvieiras. Ter–Dom a partir das 13h.",
@@ -83,12 +85,17 @@ function Localizacao() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-20">
-        <img
-          src={g9.url}
-          alt="Fachada e jardim da gelateria Monte Civetta"
-          loading="lazy"
-          className="mx-auto max-h-[520px] rounded-3xl object-cover"
-        />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {SPACE_PHOTOS.map((photo) => (
+            <img
+              key={photo.src}
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              className="aspect-[4/3] w-full rounded-lg bg-secondary object-contain"
+            />
+          ))}
+        </div>
       </section>
 
       <SiteFooter />

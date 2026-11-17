@@ -28,3 +28,5 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Share newly uploaded space photos through a browser-safe photo list so Location and Gallery reuse the same CDN assets without duplicate uploads.

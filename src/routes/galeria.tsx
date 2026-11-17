@@ -15,6 +15,7 @@ import p9 from "@/assets/galeria-9.jpg.asset.json";
 import p10 from "@/assets/galeria-10.jpg.asset.json";
 import g3 from "@/assets/ig-3.jpg.asset.json";
 import g9 from "@/assets/ig-9.jpg.asset.json";
+import { SPACE_PHOTOS } from "@/lib/space-photos";
 
 const PHOTOS = [
   { src: p1.url, alt: "Vitrine colorida de gelatos" },
@@ -29,6 +30,7 @@ const PHOTOS = [
   { src: g3.url, alt: "Cappuccino com brownie e gelato" },
   { src: p10.url, alt: "Vitrine de sabores da Monte Civetta" },
   { src: g9.url, alt: "Fachada e jardim da gelateria" },
+  ...SPACE_PHOTOS,
 ];
 
 export const Route = createFileRoute("/galeria")({
@@ -37,6 +39,8 @@ export const Route = createFileRoute("/galeria")({
       { title: "Galeria de fotos — Monte Civetta Gelateria" },
       { name: "description", content: "Fotos dos gelatos, sobremesas e do espaço da Monte Civetta em Canasvieiras, Florianópolis." },
       { property: "og:title", content: "Galeria de fotos — Monte Civetta Gelateria" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:description", content: "Gelatos, sobremesas e o nosso cantinho em Canasvieiras." },
     ],
   }),
@@ -45,6 +49,7 @@ export const Route = createFileRoute("/galeria")({
 
 function Galeria() {
   const [open, setOpen] = useState<number | null>(null);
+  const activePhoto = open === null ? undefined : PHOTOS[open];
   const go = (d: number) => setOpen((i) => (i === null ? i : (i + d + PHOTOS.length) % PHOTOS.length));
 
   return (
@@ -70,11 +75,11 @@ function Galeria() {
 
       <SiteFooter />
 
-      {open !== null && (
+      {activePhoto && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-cocoa/95 p-4" onClick={() => setOpen(null)}>
           <button aria-label="Fechar" className="absolute right-4 top-4 text-cream"><X className="h-8 w-8" /></button>
           <button aria-label="Anterior" onClick={(e) => { e.stopPropagation(); go(-1); }} className="absolute left-2 text-cream md:left-6"><ChevronLeft className="h-10 w-10" /></button>
-          <img src={PHOTOS[open]!.src} alt={PHOTOS[open]!.alt} className="max-h-[90vh] max-w-full rounded-xl" onClick={(e) => e.stopPropagation()} />
+          <img src={activePhoto.src} alt={activePhoto.alt} className="max-h-[90vh] max-w-full rounded-xl" onClick={(e) => e.stopPropagation()} />
           <button aria-label="Próxima" onClick={(e) => { e.stopPropagation(); go(1); }} className="absolute right-2 text-cream md:right-6"><ChevronRight className="h-10 w-10" /></button>
         </div>
       )}
