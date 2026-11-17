@@ -3,6 +3,7 @@ import { createRouter, rootRouteId } from "@tanstack/react-router";
 import { describe, expect, it } from "vitest";
 
 import { routeTree } from "@/routeTree.gen";
+import { WHATSAPP_CONTACT } from "@/lib/site";
 import { filterFlavors, FLAVORS } from "@/routes/sabores";
 
 // Match routes without running loaders or rendering: loaders may need a server or
@@ -46,5 +47,13 @@ describe("Flavor list", () => {
   it("shows every flavor when the search box is empty", () => {
     expect(filterFlavors("")).toHaveLength(55);
     expect(filterFlavors("   ")).toHaveLength(55);
+  });
+});
+
+describe("Floating WhatsApp button", () => {
+  it("opens the shop's number with the question pre-filled", () => {
+    expect(WHATSAPP_CONTACT).toBe(
+      "https://wa.me/5548991235390?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20uma%20d%C3%BAvida.",
+    );
   });
 });
