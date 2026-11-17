@@ -5,10 +5,6 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { IFOOD, WHATSAPP } from "@/lib/site";
 
-const IFOOD =
-  "https://www.ifood.com.br/delivery/florianopolis-sc/monte-civetta-gelateria-canasvieiras/47cab871-7828-4ad0-8a83-d783adf0df75";
-const WHATSAPP = "https://wa.me/5548991235390";
-
 type Flavor = { name: string; tag?: "vegano" | "diet" };
 
 export const FLAVORS: Flavor[] = [
@@ -192,10 +188,7 @@ function Sabores() {
         </div>
       </section>
 
-      <footer className="border-t py-10 text-center text-sm text-muted-foreground">
-        <img src={logo.url} alt="Monte Civetta" className="mx-auto mb-4 h-32 w-auto mix-blend-multiply md:h-40" />
-        © {new Date().getFullYear()} Monte Civetta Gelateria · La Casa del Gelato
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
