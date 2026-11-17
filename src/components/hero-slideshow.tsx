@@ -4,7 +4,7 @@ import h1 from "@/assets/hero-1.jpg.asset.json";
 import h2 from "@/assets/hero-2.jpg.asset.json";
 import h3 from "@/assets/hero-3.jpg.asset.json";
 import h4 from "@/assets/hero-4.jpg.asset.json";
-import h5 from "@/assets/hero-5.jpg.asset.json";
+import h5 from "@/assets/gelato-rosa-vermelha.png.asset.json";
 
 /** The five photos shown in the home-page slideshow, in the order they appear. */
 export const HERO_SLIDES = [
@@ -26,7 +26,7 @@ export const HERO_SLIDES = [
   },
   {
     src: h5.url,
-    alt: "Bandeja com bolas coloridas de gelato e biscoito da Monte Civetta",
+    alt: "Bandeja de gelatos com biscoito Monte Civetta e rosa vermelha na mesa",
   },
 ];
 
