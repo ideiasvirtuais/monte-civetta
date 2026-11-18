@@ -30,3 +30,4 @@ use the editor.
 <!-- LOVABLE:END -->
 
 - Share newly uploaded space photos through a browser-safe photo list so Location and Gallery reuse the same CDN assets without duplicate uploads.
+- Prerender the seven public pages and export only client output plus locally mirrored CDN assets to dist/ftp; traditional Apache FTP hosting cannot run the source repository or Worker server bundle.

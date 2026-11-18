@@ -18,6 +18,27 @@ Continue developing this project in the [Lovable editor](https://lovable.dev/pro
 
 ## Development
 
+## Hospedagem por FTP — montecivettagelateria.com.br
+
+O repositório contém o código-fonte, não um site que o Apache possa abrir diretamente. Para essa hospedagem, gere as sete páginas HTML, os arquivos CSS/JavaScript e as fotos:
+
+```sh
+npm install
+npm run build:ftp
+```
+
+Envie **todo o conteúdo de `dist/ftp/`**, incluindo o arquivo oculto `.htaccess` e a pasta `__l5e` com as fotos, para a pasta pública do domínio indicada pelo painel da hospedagem (normalmente `public_html` ou `www`). O arquivo `index.html` precisa ficar diretamente nessa pasta, e não dentro de uma pasta `ftp` ou `dist`.
+
+Não envie `src`, `node_modules`, arquivos `.asset.json` nem o pacote de servidor. A exportação funciona sem Node.js na hospedagem. Para cada atualização, execute novamente o comando e substitua os arquivos publicados. O preparo exige internet para baixar as fotos e é interrompido se alguma foto ou página estiver incompleta.
+
+Se já gerou as páginas com `npm run build`, use `npm run prepare:ftp` para preparar apenas a pasta de envio.
+
+### Acesso e HTTPS
+
+Na verificação de 18/11/2026, `http://montecivettagelateria.com.br/` retornou **403 Forbidden**, e o certificado HTTPS não correspondia ao domínio. A exportação não altera permissões nem certificados do provedor: confirme a pasta pública correta, a leitura dos arquivos (em geral arquivos `644` e pastas `755`, nunca `777`) e ative um certificado que cubra o domínio no painel da hospedagem. Não há redirecionamento forçado para HTTPS neste pacote enquanto esse certificado não estiver correto.
+
+Confira `/`, `/produtos`, `/sabores`, `/galeria`, `/localizacao`, `/entrega` e `/fale-conosco` abrindo e recarregando cada endereço após o envio.
+
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh

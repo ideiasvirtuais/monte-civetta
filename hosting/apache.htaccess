@@ -1,0 +1,10 @@
+# Serve the generated pages directly; no Node.js process is required.
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Keep the site's existing extensionless links, without directory redirects.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.+?)/?$ $1/index.html [L]
+</IfModule>
