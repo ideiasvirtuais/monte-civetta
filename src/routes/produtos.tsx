@@ -3,6 +3,7 @@ import { Bike, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { IFOOD, WHATSAPP } from "@/lib/site";
+import { SPACE_PHOTOS } from "@/lib/space-photos";
 import p2 from "@/assets/galeria-2.jpg.asset.json";
 import p4 from "@/assets/galeria-4.jpg.asset.json";
 import p5 from "@/assets/galeria-5.jpg.asset.json";
@@ -19,8 +20,9 @@ const ITEMS = [
   },
   {
     img: p2.url,
+    extraImg: SPACE_PHOTOS.find((photo) => photo.alt === "Copinho de gelato com biscoito em frente à Monte Civetta"),
     alt: "Copinho de gelato sobre a mesa da gelateria",
-    t: "Copinho",
+    t: "Copo ou Vasilha",
     d: "Copinho com gelato, para comer na hora ou levar.",
   },
   {
@@ -85,7 +87,14 @@ function Produtos() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {ITEMS.map((i) => (
             <article key={i.t} className="overflow-hidden rounded-3xl border border-cocoa/15 bg-card">
-              <img src={i.img} alt={i.alt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+              {i.extraImg ? (
+                <div className="grid aspect-[4/3] grid-cols-2 overflow-hidden">
+                  <img src={i.img} alt={i.alt} loading="lazy" className="h-full min-h-0 w-full object-cover" />
+                  <img src={i.extraImg.src} alt={i.extraImg.alt} loading="lazy" className="h-full min-h-0 w-full object-cover" />
+                </div>
+              ) : (
+                <img src={i.img} alt={i.alt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+              )}
               <div className="p-5">
                 <h2 className="font-serif text-3xl text-cocoa">{i.t}</h2>
                 <p className="mt-2 text-muted-foreground">{i.d}</p>
