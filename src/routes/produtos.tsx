@@ -31,9 +31,9 @@ const ITEMS = [
   },
   {
     img: p5.url,
-    alt: "Brownie com gelato e calda de chocolate",
-    t: "Brownie com gelato",
-    d: "Brownie com gelato e calda de chocolate.",
+    alt: "Petit gâteau com gelato e calda de chocolate",
+    t: "Petit gâteau",
+    d: "Bolo de chocolate com recheio cremoso servido nosso gelato e calda de chocolate.",
   },
   {
     img: g3.url,
@@ -56,12 +56,12 @@ export const Route = createFileRoute("/produtos")({
       {
         name: "description",
         content:
-          "Casquinha, copinho, banana split, brownie com gelato, cappuccino e taça na Monte Civetta, em Canasvieiras, Florianópolis.",
+          "Casquinha, copinho, banana split, petit gâteau, cappuccino e taça na Monte Civetta, em Canasvieiras, Florianópolis.",
       },
       { property: "og:title", content: "Produtos — Monte Civetta Gelateria" },
       {
         property: "og:description",
-        content: "Casquinha, copinho, banana split, brownie com gelato e mais.",
+        content: "Casquinha, copinho, banana split, petit gâteau e mais.",
       },
     ],
   }),
